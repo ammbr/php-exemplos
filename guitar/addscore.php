@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Guitar</title>
+	<title>Guitar Wars</title>
 </head>
 <body>
 	<h2>Guitar Wars</h2>
