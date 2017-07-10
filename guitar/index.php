@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Guitar</title>
+	<title>Guitar Wars</title>
 	<link rel="stylesheet" type="text/css" href="css/guitar-style.css">
 </head>
 <body>
