@@ -33,7 +33,7 @@ $data = mysqli_query($conecta, $query)
 echo "<table>";
 while ($user = mysqli_fetch_assoc($data)) {
 	
-	echo "<tr><td><img alt='foto' src='".GW_UPLOADPATH.$user['picture']."'> ".$user['first_name']."</td></tr>";
+	echo "<tr><td><img alt='foto' src='".GW_UPLOADPATH.$user['picture']."'></td><td>".$user['first_name']."</td></tr>";
 }
 echo "</table>";
 
