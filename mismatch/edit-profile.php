@@ -4,12 +4,12 @@ require_once("appvars.php");
  	$user_id = $_COOKIE['user_id'];
 	if(isset($_POST['submit'])) {
 
-		$first_name = $_POST['first_name'];
-		$last_name = $_POST['last_name'];
-		$sexo = $_POST['gender'];
-		$birthday = $_POST['birthday'];
-		$city = $_POST['city'];
-		$state = $_POST['state'];
+		$first_name = mysqli_real_escape_string($conecta, trim($_POST['first_name']));
+		$last_name = mysqli_real_escape_string($conecta, trim($_POST['last_name']));
+		$sexo = mysqli_real_escape_string($conecta, trim($_POST['gender']));
+		$birthday = mysqli_real_escape_string($conecta, trim($_POST['birthday']));
+		$city = mysqli_real_escape_string($conecta, trim($_POST['city']));
+		$state = mysqli_real_escape_string($conecta, trim($_POST['state']));
 		$picture = mysqli_real_escape_string($conecta, trim($_FILES['picture']['name']));
 		$screenshot_type = $_FILES['picture']['type'];
 		$screenshot_size = $_FILES['picture']['size'];
