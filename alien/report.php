@@ -22,14 +22,14 @@
 		$fang_spotted = $_POST['fangspotted'];
 		$email = $_POST['email'];
 
-		//$to = 'email@email.com';
-		//$subject = 'Aliens Abducte Me - Abduction Report';
+		$to = 'email@email.com';
+		$subject = 'Aliens Abducte Me - Abduction Report';
         $msg = $name.' was abducted '.$when_it_happened.' and was gone for '.$how_long.'\n'.
         'Alien description: '.$alien_description.'\n'.
         'What they did: '.$what_they_did.'\n'.
         'Fang spotted: '.$fang_spotted.'\n'.
         'Other comments: '.$other;
-        //mail($to, $subject, $msg, 'From: '.$email);
+        mail($to, $subject, $msg, 'From: '.$email);
 
 		echo 'Thanks for submitting the form.<br>';
 		echo 'You were abducted '.$when_it_happened;

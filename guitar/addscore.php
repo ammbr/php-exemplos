@@ -45,15 +45,15 @@ if(isset($_POST['submit'])) {
 			    }
 			} else {
 				echo '<p>Houve um problema no arquivo na tentativa de envio.</p>';
-				}
+			}
 		} else {
 			echo '<p>O arquivo precisa ser jpg, gif ou png e ser menor que '.MAX_FILE_SIZE.'KB.</p>';
-			}
+		}
 		@unlink($_FILES['screenshot']['tmp_name']);
 
 	} else {
 		echo '<p>Insira todas as informações.</p>';
-		}
+	}
 }
 
  ?>
