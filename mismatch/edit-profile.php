@@ -50,7 +50,7 @@ require_once("appvars.php");
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
-	<h1>Cadastro</h1>
+	<h1>Editar Perfil</h1>
 
 	<form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 
@@ -76,7 +76,7 @@ require_once("appvars.php");
 		<label for="picture">Picture:</label>
 		<input type="file" id="picture" name="picture"><br><br>
 
-		<input type="submit" name="submit" value="Cadastrar">
+		<input type="submit" name="submit" value="Atualizar">
 
 	</form>
 	<a href="index.php">Voltar</a>
