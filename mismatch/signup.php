@@ -13,6 +13,17 @@ if(isset($_POST['submit'])) {
 			$query = "INSERT INTO mismatch_user (username, password, join_date) VALUES ('$username', SHA('$password1'), NOW())";
 			mysqli_query($conecta, $query)
 				or die("erro ao acessar banco de dados.");
+			if(isset($username)) {
+				$query = "SELECT user_id, username FROM mismatch_user WHERE  username = '$username' AND password = SHA('$password1')";
+			$data = mysqli_query($conecta, $query)
+				or die("erro ao acessar banco de dados.");
+
+				if(mysqli_num_rows($data) == 1) {
+					$row =mysqli_fetch_array($data);
+					setcookie('user_id', $row['user_id']);
+					setcookie('username', $row['username']);
+				}
+			}
 			echo "<p>Conta criada com sucesso. Agora você pode fazer login e <a href='edit-profile.php'>editar seu perfil</a>.<p>";
 			mysqli_close($conecta);
 			exit();
