@@ -41,7 +41,7 @@
 		echo 'Other comments: '.$other.'<br>';
 		echo 'Your email address is '.$email.'<br>';
 
-		$dbc = mysqli_connect('localhost', 'root', '', 'aliendatabase')
+		$dbc = mysqli_connect('localhost', 'root', '', 'alien')
 			or die('Error connecting to MySQL server.');
 
 	    $query = "INSERT INTO aliens_abduction (first_name, last_name, when_it_happened, how_long, ".
