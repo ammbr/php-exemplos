@@ -1,1 +1,2 @@
-#php-livroExercíciosdolivroUseaCabeça!PHP-MySQL.
+#php-livro
+Exercícios do livroUseaCabeça!PHP-MySQL.
