@@ -1,2 +1,2 @@
 # php-livro
-Exercicíos do livro Use a Cabeça! PHP - MySQL.
+Exercícios do livro Use a Cabeça! PHP - MySQL.
