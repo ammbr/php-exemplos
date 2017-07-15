@@ -1,5 +1,6 @@
 <?php require_once("conecta.php");
-session_start();
+$page_title = ' - Cadastrar';
+include_once("header.php");
 
 if(isset($_POST['submit'])) {
 	$username = mysqli_real_escape_string($conecta, trim($_POST['username']));
@@ -21,10 +22,7 @@ if(isset($_POST['submit'])) {
 
 				if(mysqli_num_rows($data) == 1) {
 					$row =mysqli_fetch_array($data);
-					$_SESSION['user_id'] = $row['user_id'];
-				    $_SESSION['username'] = $row['username'];
-				    setcookie('user_id', $row['user_id'], time() + (60 * 60 * 24 * 30));
-					setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
+					require_once('startsession.php');
 				}
 			}
 			echo "<p>Conta criada com sucesso. Agora você pode fazer login e <a href='edit-profile.php'>editar seu perfil</a>.<p>";
@@ -40,7 +38,7 @@ if(isset($_POST['submit'])) {
 } 
 mysqli_close($conecta);
 ?>
-<form method="post" action="signup.php">
+	<form method="post" action="signup.php">
 		<fieldset>
 
 			<legend>Informações de registro.</legend>
@@ -54,7 +52,10 @@ mysqli_close($conecta);
 			<label for="password2">Password:</label>
 			<input type="password" id="password2" name="password2"><br>
 
-		</fieldset>
+		</fieldset><br>
 		<input type="submit" name="submit" value="Sign Up">
 	</form>
+
+<?php include_once('footer.php'); ?>
+
 

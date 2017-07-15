@@ -1,14 +1,6 @@
-<?php require_once("conecta.php") ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Log In</title>
-</head>
-<body>
-	<h3>Mismatch - Log In</h3>
-
-<?php
-session_start();
+<?php require_once("conecta.php");
+$page_title = ' - Log In';
+include_once("header.php");
 
 $error_msg = "";
 
@@ -24,10 +16,9 @@ if(!isset($_SESSION['user_id'])) {
 
 			if(mysqli_num_rows($data) == 1) {
 				$row =mysqli_fetch_array($data);
-				$_SESSION['user_id'] = $row['user_id'];
-				$_SESSION['username'] = $row['username'];
-				setcookie('user_id', $row['user_id'], time() + (60 * 60 * 24 * 30));
-				setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
+
+				require_once('startsession.php');
+				
 				$home_url = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).
 					"/index.php";
 				header("Location:".$home_url);
@@ -45,24 +36,22 @@ if(!isset($_SESSION['user_id'])) {
 if(empty($_SESSION['user_id'])) {
 	echo "<p>".$error_msg."</p>";
 ?>
-<form action="login.php" method="post">
-	<label for="username">Usuário:</label>
-	<input type="text" name="username"><br>
+	<form action="login.php" method="post">
+		<label for="username">Usuário:</label>
+		<input type="text" name="username"><br>
 
-	<label for="password">Senha:</label>
-	<input type="password" name="password"><br>
+		<label for="password">Senha:</label>
+		<input type="password" name="password"><br><br>
 
-	<input type="submit" name="submit" value="Entrar">
-</form>
+		<input type="submit" name="submit" value="Entrar">
+	</form>
 
 <?php 
 } else {
 	echo "<p>Você está logado como ".$_SESSION['username']."</p>";
 }
 
+include_once('footer.php'); 
+
 ?>
-
-</body>
-</html>
-
 

@@ -1,6 +1,8 @@
 <?php require_once("conecta.php");
 require_once("appvars.php");
-session_start();
+$page_title = ' - Edit Profile';
+include_once("header.php");
+
  if(isset($_SESSION['user_id'])) {
  	$user_id = $_SESSION['user_id'];
 	if(isset($_POST['submit'])) {
@@ -42,17 +44,6 @@ session_start();
 }
 ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Mismatch</title>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
-</head>
-<body>
-	<h1>Editar Perfil</h1>
-
 	<form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 
 		<label for="first_name">First Name:</label>
@@ -80,7 +71,5 @@ session_start();
 		<input type="submit" name="submit" value="Atualizar">
 
 	</form>
-	<a href="index.php">Voltar</a>
-	
-</body>
-</html>
+
+<?php include_once('footer.php'); ?>

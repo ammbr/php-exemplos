@@ -1,8 +1,8 @@
 <?php require_once("conecta.php");
 require_once("appvars.php");
-session_start();
+$page_title = ' - View Profile';
+include_once("header.php");
 
-echo "<h1>Mismatch - View Profile</h1>";
 if(isset($_SESSION['user_id'])) {
 	$user_id = $_SESSION['user_id'];
 	$query = "SELECT * FROM mismatch_user WHERE user_id ='$user_id'";
@@ -22,7 +22,9 @@ if(isset($_SESSION['user_id'])) {
 		
 	}
 }
-echo "<a href='index.php'>Voltar<a/>";
 
 mysqli_close($conecta);
+
+include_once('footer.php');
+
 

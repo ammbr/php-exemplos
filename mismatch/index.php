@@ -1,40 +1,9 @@
 <?php require_once("conecta.php");
-require_once("appvars.php")
- ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Mismatch</title>
-</head>
-<body>
-
-	<h1>Mismatch</h1>
-
-<?php 
-session_start();
-
-if(!isset($_SESSION['user_id'])) {
-	if(isset($_COOKIE['user_id']) && isset($_COOKIE['username'])) {
-		$_SESSION['user_id'] = $_COOKIE['user_id'];
-		$_SESSION['username'] = $_COOKIE['username'];
-	}
-}
-
-if(isset($_SESSION['username'])) {
-	echo "&#10084;<a href='view-profile.php'>View Profile</a><br>";
-	echo "&#10084;<a href='edit-profile.php'>Edit Profile</a><br>";
-	echo "&#10084;<a href='logout.php'>Logout</a><br>";
-} else {
-
-	echo "&#10084;<a href='login.php'>Login</a><br>";
-	echo "&#10084;<a href='signup.php'>Sign Up</a><br>";
-}
- ?>
+require_once("appvars.php");
+$page_title = '';
+include_once("header.php");
 	
-	<h2>Menmbers</h2>
-
-<?php 
+echo '<h2>Members</h2>';
 
 $query = "SELECT * FROM mismatch_user";
 $data = mysqli_query($conecta, $query)
@@ -48,7 +17,4 @@ echo "</table>";
 
 mysqli_close($conecta);
 
-?>
-
-</body>
-</html>
+include_once('footer.php');
