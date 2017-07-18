@@ -17,17 +17,22 @@ if(!isset($_SESSION['user_id'])) {
 			if(mysqli_num_rows($data) == 1) {
 				$row =mysqli_fetch_array($data);
 
-				require_once('startsession.php');
+				$_SESSION['user_id'] = $row['user_id'];
+				$_SESSION['username'] = $row['username'];
+				setcookie('user_id', $row['user_id'], time() + (60 * 60 * 24 * 30));
+				setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
 				
 				$home_url = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).
 					"/index.php";
 				header("Location:".$home_url);
+
 			} else {
 				$error_msg = "Nome ou senha inválida. Ou <a href='signup.php'>Cadastrar.</a>";
 			}
 		} else {
 			$error_msg = "Digite o nome e sua senha. Ou <a href='signup.php'>Cadastrar.</a>";
 		}
+		mysqli_close($conecta);
 	}
 	?>
 	<?php

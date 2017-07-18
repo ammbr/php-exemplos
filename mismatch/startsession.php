@@ -1,7 +1,10 @@
 <?php  
 
-$_SESSION['user_id'] = $row['user_id'];
-$_SESSION['username'] = $row['username'];
-setcookie('user_id', $row['user_id'], time() + (60 * 60 * 24 * 30));
-setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
+if(!isset($_SESSION['user_id'])) {
+	if(isset($_COOKIE['user_id']) && isset($_COOKIE['username'])) {
+		$_SESSION['user_id'] = $_COOKIE['user_id'];
+		$_SESSION['username'] = $_COOKIE['username'];
+	}
+}
+
 
