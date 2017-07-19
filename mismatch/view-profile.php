@@ -9,8 +9,7 @@ if(isset($_GET['user_id'])) {
 	$data = mysqli_query($conecta, $query)
 		or die("erro ao acessar banco de dados.");
 	
-} else {
-	if(isset($_SESSION['user_id'])) {
+} elseif (isset($_SESSION['user_id'])) {
 		$user_id = $_SESSION['user_id'];
 		$query = "SELECT * FROM mismatch_user WHERE user_id ='$user_id'";
 		$data = mysqli_query($conecta, $query)
