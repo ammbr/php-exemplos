@@ -15,7 +15,7 @@ if(isset($_GET['user_id'])) {
 		$data = mysqli_query($conecta, $query)
 			or die("erro ao acessar banco de dados.");
 		
-	}
+	
 }
 while ($user = mysqli_fetch_assoc($data)) {
 		echo "<table>";
