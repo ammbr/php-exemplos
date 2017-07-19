@@ -1,5 +1,4 @@
-<h1>Guitar Wars</h1>
-<p><a href="index.php">Home</a></p>
+
 <?php  
 if(isset($_POST['submit'])) {
 	$output_form = false;
