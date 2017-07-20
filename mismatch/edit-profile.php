@@ -22,7 +22,7 @@ include_once("header.php");
 				($screenshot_type == 'image/jpeg') || ($screenshot_type == 'image/png')) && ($screenshot_size > 0) && ($screenshot_size <= MAX_FILE_SIZE)) {
 				if($_FILES['picture']['error'] == 0) {
 
-					$target = GW_UPLOADPATH . $picture;
+					$target = UPLOADPATH . $picture;
 					if (move_uploaded_file($_FILES['picture']['tmp_name'], $target)) {
 
 					$query = "UPDATE mismatch_user SET first_name = '$first_name', last_name = '$last_name', gender = '$sexo', birthday = '$birthday', city = '$city', state = '$state', picture = '$picture' WHERE user_id = '$user_id'";

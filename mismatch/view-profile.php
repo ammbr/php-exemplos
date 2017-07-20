@@ -26,9 +26,9 @@ while ($user = mysqli_fetch_assoc($data)) {
 		echo "<tr><td>Birthday:</td><td>".$user['birthday']."</td></tr>";
 		echo "<tr><td>Location:</td><td>".$user['city'].", ".$user['state']."</td></tr>";
 		echo "</table>";
-		echo "<img alt='foto' src='".GW_UPLOADPATH.$user['picture']."'><br>";
+		echo "<img alt='foto' src='".UPLOADPATH.$user['picture']."'><br>";
 		
-	}
+}
 mysqli_close($conecta);
 
 include_once('footer.php');

@@ -64,7 +64,7 @@ if (mysqli_fetch_array($data) != 0) {
 			}
 			echo '</td><td>';
 			if (!empty($row['picture'])) {
-				echo '<img src= "' . GW_UPLOADPATH.$row['picture'].'" alt="Profile Picture"><br>';
+				echo '<img src= "' . UPLOADPATH.$row['picture'].'" alt="Profile Picture"><br>';
 
 			}
 			echo '</td></tr></table>';
