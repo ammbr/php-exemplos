@@ -27,7 +27,7 @@ if (mysqli_fetch_array($data) != 0) {
 		or die("erro ao acessar banco de dados.");
 
 	while ($row = mysqli_fetch_array($data)) {
-		$query2 = "SELECT response_id, topic_id, response FROM mismatch_response WHERE user_id = '".$_SESSION['user_id']."'";
+		$query2 = "SELECT response_id, topic_id, response FROM mismatch_response WHERE user_id != '".$_SESSION['user_id']."'";
 		$data2 = mysqli_query($conecta, $query2)
 		or die("erro ao acessar banco de dados.");
 		$mismatch_responses = array();
@@ -37,7 +37,7 @@ if (mysqli_fetch_array($data) != 0) {
 		$score = 0;
 		$topics = array();
 		for ($i = 0; $i < count($user_responses); $i++) {
-			if ((int)$user_responses[$i]['response'] + ((int)$mismatch_responses[$i]['response'] == 3)) {
+			if ((int)$user_responses[$i]['response'] + (int)$mismatch_responses[$i]['response'] == 3) {
 			$score += 1;
 			array_push($topics, $user_responses[$i]['topic_name']);
 	        }
@@ -69,7 +69,7 @@ if (mysqli_fetch_array($data) != 0) {
 			}
 			echo '</td></tr></table>';
 
-			echo '<h4>Vocês tiveram respostas diferentes nos seguintes tópicos: '.count($mismatch_topics).' tópicos:</h4>';
+			echo '<h4>Vocês tiveram respostas diferentes nos seguintes '.count($mismatch_topics).' tópicos:</h4>';
 			foreach ($mismatch_topics as $topic) {
 				echo $topic . '<br>';
 			}
