@@ -77,7 +77,7 @@ function generate_sort_links($user_search, $sort) {
 function generate_page_links($user_search, $sort, $cur_page, $num_pages) {
 	$page_links = '';
 	if ($cur_page > 1) {
-		$page_links .= '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search.'&sort='.$sort.'&page='.($cur_page - 1).'"><-</a>';
+		$page_links .= '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search.'&sort='.$sort.'&page='.($cur_page - 1).'"><- </a>';
 	} else {
 		$page_links .= '<- ';
 	}
@@ -89,7 +89,7 @@ function generate_page_links($user_search, $sort, $cur_page, $num_pages) {
 		}
 	}
 	if ($cur_page < $num_pages) {
-		$page_links .= '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search.'&sort='.$sort.'&page='.($cur_page + 1).'">-></a>';
+		$page_links .= '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search.'&sort='.$sort.'&page='.($cur_page + 1).'"> -></a>';
 	} else {
 		$page_links .= ' ->';
 	}
