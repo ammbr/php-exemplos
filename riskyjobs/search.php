@@ -1,4 +1,5 @@
 <?php 
+require_once('conecta.php');
 include_once('header.php');
 echo "<h2>Resultado da pesquisa</h2>";
 
@@ -98,36 +99,47 @@ function generate_page_links($user_search, $sort, $cur_page, $num_pages) {
 
 $sort = $_GET['sort'];
 $user_search = $_GET['usersearch'];
+if (!empty($user_search )) {
 
-$cur_page = isset($_GET['page']) ? $_GET['page'] : 1;
-$results_per_page = 5;
-$skip = (($cur_page - 1) * $results_per_page);
+	$cur_page = isset($_GET['page']) ? $_GET['page'] : 1;
+	$results_per_page = 5;
+	$skip = (($cur_page - 1) * $results_per_page);
 
-echo '<table>';
-echo generate_sort_links($user_search, $sort);
 
-$dbc = mysqli_connect('localhost', 'root', '', 'riskjobs');
-$query = build_query($user_search, $sort); 
-$result = mysqli_query($dbc, $query);  
-$num_row = mysqli_num_rows($result); 
-$num_pages = ceil($num_row / $results_per_page); 
+	$query = build_query($user_search, $sort); 
+	$result = mysqli_query($dbc, $query)
+		or die("erro ao acessar banco de dados.");  
+	$num_row = mysqli_num_rows($result); 
+	$num_pages = ceil($num_row / $results_per_page); 
 
-$query = $query." LIMIT $skip, $results_per_page";
-$result = mysqli_query($dbc, $query);
-while ($row = mysqli_fetch_array($result)) {
-	echo '<tr><td>'.$row['title'].'</td>';
-	if (strlen($row['description']) > 100) {
-		echo '<td>'. substr($row['description'], 0, 100). ' ...</td>';	
+	$query .= " LIMIT $skip, $results_per_page";
+	$final_result = mysqli_query($dbc, $query)
+		or die("erro ao acessar banco de dados.");
+	
+	if ($num_row > 0) {
+		echo '<table>';
+		echo generate_sort_links($user_search, $sort);
+
+		while ($row = mysqli_fetch_array($final_result)) {
+			echo '<tr><td>'.$row['title'].'</td>';
+			if (strlen($row['description']) > 100) {
+				echo '<td>'. substr($row['description'], 0, 100). ' ...</td>';	
+			} else {
+				echo '<td>'. $row['description'] . '</td>';
+			}
+			echo '<td>'.$row['state'].'</td>';
+			echo '<td>'.substr($row['date_posted'], 0, 10).'</td></tr>';
+		}
+		echo '</table>';
+		if ($num_pages > 1) {
+			echo generate_page_links($user_search, $sort, $cur_page, $num_pages);
+		}
+		mysqli_close($dbc);
 	} else {
-		echo '<td>'. $row['description'] . '</td>';
-	}
-	echo '<td>'.$row['state'].'</td>';
-	echo '<td>'.substr($row['date_posted'], 0, 10).'</td></tr>';
+		echo 'Não foi encontrado nenhum resultado.';
+	}	
+} else {
+	echo 'O campo de busca está vazio.';
 }
-echo '</table>';
-if ($num_pages > 1) {
-	echo generate_page_links($user_search, $sort, $cur_page, $num_pages);
-}
-mysqli_close($dbc);
 
 include_once('footer.php');
