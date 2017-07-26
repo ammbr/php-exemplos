@@ -10,6 +10,7 @@
 	<br>
 	
 <?php 
+session_start();
 require_once('appvars.php'); 
 require_once('conecta.php');
 if(!isset($_SESSION['user_id'])) {

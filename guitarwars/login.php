@@ -1,5 +1,5 @@
 <?php require_once("conecta.php");
-
+session_start();
 $error_msg = "";
 
 if(!isset($_SESSION['user_id'])) {

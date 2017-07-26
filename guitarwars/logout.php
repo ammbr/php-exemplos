@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])) {
 	session_destroy();
 }
 setcookie('user_id', '', time() - 3600);
-setcookie('usename', '', time() - 3600);
+setcookie('username', '', time() - 3600);
 
 $home_url = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/index.php";
 header("Location:".$home_url);

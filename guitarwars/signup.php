@@ -1,5 +1,5 @@
 <?php require_once("conecta.php");
-
+session_start();
 if(isset($_POST['submit'])) {
 	$username = mysqli_real_escape_string($dbc, trim($_POST['username']));
 	$password1 = mysqli_real_escape_string($dbc, trim($_POST['password1']));

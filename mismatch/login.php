@@ -34,8 +34,7 @@ if(!isset($_SESSION['user_id'])) {
 		}
 		mysqli_close($conecta);
 	}
-	?>
-	<?php
+
 } 
 
 if(empty($_SESSION['user_id'])) {
